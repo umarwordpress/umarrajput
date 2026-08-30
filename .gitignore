@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Source captures — large originals kept out of version control.
+# assets/ holds the optimised, web-ready versions the site actually loads.
+# (~135 MB combined; regenerate assets from these locally if needed.)
+Portfolio For Website/
+website project/
