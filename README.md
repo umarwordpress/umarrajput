@@ -39,3 +39,4 @@ python3 -m http.server 8000
 - Scroll animations use IntersectionObserver and respect `prefers-reduced-motion`
 - The contact form opens the visitor's email client via `mailto:` — there is no backend
 # portfolio
+# portfolio
