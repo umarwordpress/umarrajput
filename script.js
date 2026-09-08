@@ -375,6 +375,59 @@
   })();
 
   /* ---------------------------------------------------
+     8b. Markets — region switcher (tabs)
+     --------------------------------------------------- */
+  (function regionSwitcher() {
+    var root = document.querySelector('[data-reach]');
+    if (!root) return;
+
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[data-rtab]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[data-rpanel]'));
+    if (!tabs.length || !panels.length) return;
+
+    function select(key, focusTab) {
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute('data-rtab') === key;
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        if (on && focusTab) tab.focus();
+      });
+
+      panels.forEach(function (panel) {
+        var on = panel.getAttribute('data-rpanel') === key;
+        panel.hidden = !on;
+        panel.classList.toggle('is-active', on);
+        panel.classList.remove('is-entering');
+        if (on && !reduceMotion) {
+          // restart the entry animation
+          void panel.offsetWidth;
+          panel.classList.add('is-entering');
+        }
+      });
+    }
+
+    root.addEventListener('click', function (e) {
+      var tab = e.target.closest('[data-rtab]');
+      if (tab) select(tab.getAttribute('data-rtab'), false);
+    });
+
+    root.addEventListener('keydown', function (e) {
+      var tab = e.target.closest('[data-rtab]');
+      if (!tab) return;
+      var i = tabs.indexOf(tab);
+      var next = null;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = tabs.length - 1;
+      if (next === null) return;
+      e.preventDefault();
+      select(tabs[next].getAttribute('data-rtab'), true);
+    });
+  })();
+
+  /* ---------------------------------------------------
      9. Screenshot lightbox gallery
      --------------------------------------------------- */
   (function lightbox() {

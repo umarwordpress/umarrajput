@@ -1,0 +1,27 @@
+export type Client = { src: string; alt: string; width: number; height: number };
+
+export const clients: Client[] = [
+  { src: '/assets/logos/eutc-global.png', alt: 'EUTC Global logo', width: 520, height: 134 },
+  { src: '/assets/logos/blisserastudio.png', alt: 'Bliss Era Studio logo', width: 160, height: 57 },
+  { src: '/assets/logos/lumentravels.png', alt: 'Lumen Travels logo', width: 518, height: 180 },
+  { src: '/assets/logos/intellitech.png', alt: 'Intellitech logo', width: 520, height: 103 },
+  { src: '/assets/logos/sustenify.png', alt: 'Sustenify logo', width: 520, height: 125 },
+  { src: '/assets/logos/iso-certifications.png', alt: 'ISO Certifications logo', width: 520, height: 133 },
+  { src: '/assets/logos/incorpme.png', alt: 'inCorpMe logo', width: 520, height: 109 },
+  { src: '/assets/logos/professionalroofers.png', alt: 'Professional Roofers logo', width: 245, height: 79 },
+  { src: '/assets/logos/sphynxbeds.png', alt: 'Sphynx Beds logo', width: 520, height: 142 },
+  { src: '/assets/logos/doocado.png', alt: 'Doocado logo', width: 198, height: 90 },
+  { src: '/assets/logos/helloworldtechnologies.png', alt: 'Hello World Technologies logo', width: 520, height: 117 },
+  { src: '/assets/logos/dorataqueria.png', alt: 'Dora Taqueria logo', width: 350, height: 180 },
+  { src: '/assets/logos/santiasbakery.png', alt: 'Santias Bakery logo', width: 474, height: 180 },
+  { src: '/assets/logos/fajira.png', alt: 'Fajira logo', width: 346, height: 180 },
+  { src: '/assets/logos/binof.png', alt: 'Binof logo', width: 304, height: 180 },
+  { src: '/assets/logos/jaffar-impex.png', alt: 'Jaffar Impex & General Traders logo', width: 520, height: 139 },
+  { src: '/assets/logos/lumenai-consultancy.png', alt: 'Lumen AI Consultancy logo', width: 520, height: 110 },
+  { src: '/assets/logos/mx-institute.png', alt: 'MX Institute logo', width: 520, height: 126 },
+  { src: '/assets/logos/taar-o-naqsh.png', alt: 'Taar O Naqsh logo', width: 520, height: 220 },
+  { src: '/assets/logos/itcentre.png', alt: 'IT Centre logo', width: 113, height: 129 },
+  { src: '/assets/logos/oztechemporium.png', alt: 'OZ Tech Emporium logo', width: 302, height: 92 },
+  { src: '/assets/logos/twocore1.png', alt: 'TwoCore logo', width: 60, height: 58 },
+  { src: '/assets/logos/zaruesh.png', alt: 'Zaruesh logo', width: 282, height: 44 },
+];
