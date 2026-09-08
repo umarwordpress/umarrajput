@@ -1,22 +1,23 @@
-# This repo holds the Next.js portfolio only — everything below still exists
-# locally, it is just not tracked here.
+# ---- Next.js ----
+node_modules
+.next
+out
+.env*.local
+next-env.d.ts
+*.tsbuildinfo
 
-# macOS
+# ---- macOS ----
 .DS_Store
 **/.DS_Store
 
-# The previous static site
-index.html
-work.html
-style.css
-script.js
-README.md
-assets/
-
-# Separate deliverable — give it its own repo if it needs version control
-roofing-cork/
+# ---- Not part of this app ----
+# All of it still exists locally; it is just not tracked here.
+# Leading slashes matter: a bare `assets/` would also swallow public/assets.
+/_archive/
+/assets/
+/roofing-cork/
 
 # Source captures (large originals)
-Portfolio For Website/
-website project/
-august report of institue GMB/
+/Portfolio For Website/
+/website project/
+/august report of institue GMB/
