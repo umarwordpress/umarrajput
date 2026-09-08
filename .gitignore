@@ -1,10 +1,22 @@
+# This repo holds the Next.js portfolio only — everything below still exists
+# locally, it is just not tracked here.
+
 # macOS
 .DS_Store
 **/.DS_Store
 
-# Source captures — large originals kept out of version control.
-# assets/ holds the optimised, web-ready versions the site actually loads.
-# (~135 MB combined; regenerate assets from these locally if needed.)
+# The previous static site
+index.html
+work.html
+style.css
+script.js
+README.md
+assets/
+
+# Separate deliverable — give it its own repo if it needs version control
+roofing-cork/
+
+# Source captures (large originals)
 Portfolio For Website/
 website project/
 august report of institue GMB/
