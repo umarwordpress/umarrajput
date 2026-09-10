@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { easeSoft } from '@/lib/motion';
 import './mock.css';
 
@@ -21,15 +21,13 @@ function Frame({
   label,
   children,
   play,
-  innerRef,
 }: {
   label: string;
   children: React.ReactNode;
   play: boolean;
-  innerRef: React.RefObject<HTMLDivElement | null>;
 }) {
   return (
-    <div className="mock" ref={innerRef} aria-hidden>
+    <div className="mock" aria-hidden>
       <div className="mock__bar">
         <span className="mock__dots"><i /><i /><i /></span>
         {label}
@@ -41,10 +39,10 @@ function Frame({
 }
 
 /* ---------- 1. Website Development ---------- */
-function WebsiteMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement | null> }) {
+function WebsiteMock({ play }: { play: boolean }) {
   const blocks = [0, 1, 2];
   return (
-    <Frame label="yourbusiness.com" play={play} innerRef={r}>
+    <Frame label="yourbusiness.com" play={play}>
       <div className="mweb">
         <motion.div
           className="mweb__hero"
@@ -88,7 +86,7 @@ function WebsiteMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivEle
 }
 
 /* ---------- 2. Custom Web Applications ---------- */
-function AppMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement | null> }) {
+function AppMock({ play }: { play: boolean }) {
   const tiles = [
     { v: '1,284', l: 'USERS' },
     { v: '96', l: 'ACTIVE' },
@@ -96,7 +94,7 @@ function AppMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement
   ];
   const bars = [0.4, 0.62, 0.5, 0.78, 0.66, 0.9, 0.72];
   return (
-    <Frame label="Client portal" play={play} innerRef={r}>
+    <Frame label="Client portal" play={play}>
       <div className="mapp">
         <div className="mapp__side"><i /><i /><i /><i /></div>
         <div className="mapp__main">
@@ -132,11 +130,11 @@ function AppMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement
 }
 
 /* ---------- 3. Business Automation ---------- */
-function AutomationMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement | null> }) {
+function AutomationMock({ play }: { play: boolean }) {
   const steps = ['Form submitted', 'Lead added to CRM', 'Welcome email sent', 'Team notified'];
   const stepDelay = 0.45;
   return (
-    <Frame label="When a form is submitted" play={play} innerRef={r}>
+    <Frame label="When a form is submitted" play={play}>
       <div className="mock__body">
         {steps.map((s, i) => (
           <motion.div
@@ -196,14 +194,14 @@ function AutomationMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDiv
 }
 
 /* ---------- 4. SEO ---------- */
-function SeoMock({ play, r }: { play: boolean; r: React.RefObject<HTMLDivElement | null> }) {
+function SeoMock({ play }: { play: boolean }) {
   const rows = [
     { kw: 'roofing contractor cork', from: 18, to: 4 },
     { kw: 'safety training al khobar', from: 12, to: 3 },
     { kw: 'frisør fredrikstad', from: 9, to: 1 },
   ];
   return (
-    <Frame label="Search positions" play={play} innerRef={r}>
+    <Frame label="Search positions" play={play}>
       <div className="mseo">
         {rows.map((row, i) => (
           <motion.div
@@ -253,11 +251,33 @@ const mocks = {
   seo: SeoMock,
 } as const;
 
+/** How long a full sequence plus its hold lasts before it replays. */
+const CYCLE_MS = 4200;
+
 export function ServiceMock({ id }: { id: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const inView = useInView(ref, { once: true, amount: 0.4 });
+
+  // `once: false` so the preview re-arms every time it comes back on screen.
+  const inView = useInView(ref, { amount: 0.35 });
+  const [cycle, setCycle] = useState(0);
+
+  /* Playing once meant the sequence had usually finished before anyone looked
+     at it. Replaying on a timer keeps the card alive while it is visible, and
+     stops entirely when it is not, so nothing animates off screen. */
+  useEffect(() => {
+    if (!inView || reduce) return;
+    const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
+    return () => clearInterval(t);
+  }, [inView, reduce]);
+
   const Mock = mocks[id as keyof typeof mocks];
   if (!Mock) return null;
-  return <Mock play={reduce ? true : inView} r={ref} />;
+
+  return (
+    <div ref={ref}>
+      {/* remounting on `cycle` restarts every child animation from its initial */}
+      <Mock key={cycle} play={reduce ? true : inView} />
+    </div>
+  );
 }
