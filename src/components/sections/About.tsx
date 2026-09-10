@@ -44,7 +44,7 @@ export function About() {
           />
           <div className="about__badge">
             <b className="grad-text">4+ yrs</b>
-            <span>SEO &amp; web development</span>
+            <span>Web, apps, automation &amp; SEO</span>
           </div>
         </Reveal>
       </div>

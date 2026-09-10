@@ -62,6 +62,7 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
         transition={{ duration: 0.5, ease: easeSoft }}
       />
 
+      <div className="svc__head">
       <motion.span
         className="svc__icon"
         variants={{
@@ -72,7 +73,7 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
         transition={{ type: 'spring', stiffness: 340, damping: 16 }}
         style={{ translateZ: 26 }}
       >
-        <Icon name={service.icon} size={21} />
+        <Icon name={service.icon} size={19} />
       </motion.span>
 
       <motion.h3
@@ -81,6 +82,7 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
       >
         {service.title}
       </motion.h3>
+      </div>
       <motion.p style={{ translateZ: 10 }}>{service.body}</motion.p>
 
       <ul className="svc__points">

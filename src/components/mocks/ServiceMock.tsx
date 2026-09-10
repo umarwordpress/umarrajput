@@ -1,37 +1,48 @@
 'use client';
 
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { easeSoft } from '@/lib/motion';
+import { motion, useInView, useReducedMotion, type Transition } from 'framer-motion';
+import { useRef } from 'react';
 import './mock.css';
+
+/**
+ * Every preview animates on an infinite ambient loop rather than playing a
+ * sequence once. Nothing remounts, so there is no reset flash; the motion just
+ * keeps running while the card is on screen and stops when it is not.
+ */
+
+const loop = (duration: number, delay = 0): Transition => ({
+  duration,
+  delay,
+  repeat: Infinity,
+  ease: 'easeInOut',
+});
+
+/* Swapping the target alone is not enough to stop a running loop: the
+   transition still carries `repeat: Infinity`, so it would keep cycling
+   towards the resting value forever. Off screen we hand back a plain one. */
+const rest: Transition = { duration: 0.35, ease: 'easeOut' };
+const when = (playing: boolean, t: Transition): Transition => (playing ? t : rest);
 
 const check = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
     <path d="m20 6-11 11-5-5" />
   </svg>
 );
-const dot = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-    <circle cx="12" cy="12" r="7" />
-  </svg>
-);
 
-/** Shared wrapper so all four previews share one entrance and one loop clock. */
-function Frame({
-  label,
-  children,
-  play,
-}: {
-  label: string;
-  children: React.ReactNode;
-  play: boolean;
-}) {
+function Frame({ label, children, play }: { label: string; children: React.ReactNode; play: boolean }) {
   return (
     <div className="mock" aria-hidden>
       <div className="mock__bar">
         <span className="mock__dots"><i /><i /><i /></span>
         {label}
-        <span className="mock__pill">{play ? 'live' : 'idle'}</span>
+        <span className="mock__pill">
+          <motion.i
+            className="mock__live"
+            animate={play ? { opacity: [1, 0.25, 1] } : { opacity: 1 }}
+            transition={when(play, loop(1.8))}
+          />
+          live
+        </span>
       </div>
       {children}
     </div>
@@ -40,47 +51,46 @@ function Frame({
 
 /* ---------- 1. Website Development ---------- */
 function WebsiteMock({ play }: { play: boolean }) {
-  const blocks = [0, 1, 2];
   return (
     <Frame label="yourbusiness.com" play={play}>
       <div className="mweb">
-        <motion.div
-          className="mweb__hero"
-          initial={{ opacity: 0, y: 8 }}
-          animate={play ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: easeSoft }}
-        />
+        <div className="mweb__hero">
+          {/* light sweeping across the hero, the way a page feels when it paints */}
+          <motion.span
+            className="mweb__sheen"
+            animate={play ? { x: ['-120%', '220%'] } : { x: '-120%' }}
+            transition={when(play, { duration: 2.6, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.6 })}
+          />
+        </div>
+
         <div className="mweb__cols">
-          {blocks.map((i) => (
+          {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
               className="mweb__col"
-              initial={{ opacity: 0, y: 10 }}
-              animate={play ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.15 + i * 0.1, ease: easeSoft }}
+              animate={play ? { opacity: [0.45, 1, 0.45], y: [0, -2, 0] } : { opacity: 0.8, y: 0 }}
+              transition={when(play, loop(2.4, i * 0.28))}
             />
           ))}
         </div>
+
         {[70, 45].map((w, i) => (
           <motion.div
             key={i}
             className="mweb__line"
             style={{ width: `${w}%` }}
-            initial={{ opacity: 0, scaleX: 0.4 }}
-            animate={play ? { opacity: 1, scaleX: 1 } : {}}
-            transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: easeSoft, originX: 0 }}
+            animate={play ? { opacity: [0.4, 0.9, 0.4] } : { opacity: 0.7 }}
+            transition={when(play, loop(2.4, 0.5 + i * 0.25))}
           />
         ))}
       </div>
-      <motion.div
-        className="mweb__score"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={play ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.85, ease: easeSoft }}
-      >
-        <b>98</b>
+
+      <div className="mweb__score">
+        <motion.b animate={play ? { opacity: [0.75, 1, 0.75] } : { opacity: 1 }} transition={when(play, loop(2.2))}>
+          98
+        </motion.b>
         <span>PERFORMANCE</span>
-      </motion.div>
+      </div>
     </Frame>
   );
 }
@@ -92,33 +102,46 @@ function AppMock({ play }: { play: boolean }) {
     { v: '96', l: 'ACTIVE' },
     { v: '12', l: 'PENDING' },
   ];
-  const bars = [0.4, 0.62, 0.5, 0.78, 0.66, 0.9, 0.72];
+  /* each bar breathes between two heights on its own clock, so the chart
+     never lands on a repeating pattern */
+  const bars = [
+    [0.38, 0.72], [0.6, 0.42], [0.5, 0.86], [0.78, 0.55],
+    [0.44, 0.8], [0.9, 0.6], [0.55, 0.92],
+  ];
+
   return (
     <Frame label="Client portal" play={play}>
       <div className="mapp">
-        <div className="mapp__side"><i /><i /><i /><i /></div>
+        <div className="mapp__side">
+          <motion.span
+            className="mapp__active"
+            animate={play ? { y: [0, 12, 24, 12, 0] } : { y: 0 }}
+            transition={when(play, { duration: 6, repeat: Infinity, ease: 'easeInOut' })}
+          />
+          <i /><i /><i /><i />
+        </div>
+
         <div className="mapp__main">
           <div className="mapp__tiles">
             {tiles.map((t, i) => (
               <motion.div
                 key={t.l}
                 className="mapp__tile"
-                initial={{ opacity: 0, y: 8 }}
-                animate={play ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.09, ease: easeSoft }}
+                animate={play ? { borderColor: ['rgba(255,255,255,0.10)', 'rgba(34,211,238,0.32)', 'rgba(255,255,255,0.10)'] } : { borderColor: 'rgba(255,255,255,0.10)' }}
+                transition={when(play, loop(3.6, i * 1.2))}
               >
                 <b>{t.v}</b>
                 <span>{t.l}</span>
               </motion.div>
             ))}
           </div>
+
           <div className="mapp__chart">
-            {bars.map((h, i) => (
+            {bars.map(([a, bH], i) => (
               <motion.span
                 key={i}
-                initial={{ scaleY: 0 }}
-                animate={play ? { scaleY: h } : {}}
-                transition={{ duration: 0.55, delay: 0.35 + i * 0.06, ease: easeSoft }}
+                animate={play ? { scaleY: [a, bH, a] } : { scaleY: a }}
+                transition={when(play, loop(2.2 + (i % 3) * 0.45, i * 0.12))}
                 style={{ height: '100%' }}
               />
             ))}
@@ -132,59 +155,65 @@ function AppMock({ play }: { play: boolean }) {
 /* ---------- 3. Business Automation ---------- */
 function AutomationMock({ play }: { play: boolean }) {
   const steps = ['Form submitted', 'Lead added to CRM', 'Welcome email sent', 'Team notified'];
-  const stepDelay = 0.45;
+  const CYCLE = 3.2;
+
   return (
     <Frame label="When a form is submitted" play={play}>
-      <div className="mock__body">
+      <div className="mock__body mock__body--flow">
+        {/* a pulse travelling down the connector, twocore's dot-slide idea */}
+        <span className="mflow__track" aria-hidden>
+          <motion.span
+            className="mflow__pulse"
+            animate={play ? { top: ['0%', '100%'], opacity: [0, 1, 1, 0] } : { top: '0%', opacity: 0 }}
+            transition={when(play, { duration: CYCLE, repeat: Infinity, ease: 'linear', times: [0, 0.1, 0.9, 1] })}
+          />
+        </span>
+
         {steps.map((s, i) => (
-          <motion.div
-            key={s}
-            className="mrow"
-            initial={{ opacity: 0, x: -8 }}
-            animate={play ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.35, delay: i * stepDelay, ease: easeSoft }}
-          >
+          <div className="mrow" key={s}>
             <motion.span
               className="mrow__ico"
               animate={
                 play
-                  ? { backgroundColor: 'rgba(34,211,238,0.14)', color: '#22D3EE' }
-                  : {}
+                  ? {
+                      backgroundColor: ['rgba(255,255,255,0.03)', 'rgba(34,211,238,0.18)', 'rgba(255,255,255,0.03)'],
+                      borderColor: ['rgba(255,255,255,0.10)', 'rgba(34,211,238,0.45)', 'rgba(255,255,255,0.10)'],
+                    }
+                  : { backgroundColor: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.10)' }
               }
-              transition={{ delay: 0.25 + i * stepDelay, duration: 0.3 }}
+              transition={when(play, loop(CYCLE, (i * CYCLE) / steps.length))}
             >
               <motion.span
-                initial={{ scale: 0, opacity: 0 }}
-                animate={play ? { scale: 1, opacity: 1 } : {}}
-                transition={{ delay: 0.25 + i * stepDelay, duration: 0.3, ease: easeSoft }}
-                style={{ display: 'grid', placeItems: 'center', width: 11, height: 11 }}
+                className="mrow__check"
+                animate={play ? { opacity: [0.25, 1, 0.25], scale: [0.7, 1, 0.7] } : { opacity: 1, scale: 1 }}
+                transition={when(play, loop(CYCLE, (i * CYCLE) / steps.length))}
               >
                 {check}
               </motion.span>
             </motion.span>
+
             <span className="mrow__label">{s}</span>
+
             <motion.span
               className="mrow__meta"
-              initial={{ opacity: 0 }}
-              animate={play ? { opacity: 1 } : {}}
-              transition={{ delay: 0.3 + i * stepDelay, duration: 0.3 }}
+              animate={play ? { opacity: [0.2, 1, 0.2] } : { opacity: 0.7 }}
+              transition={when(play, loop(CYCLE, (i * CYCLE) / steps.length))}
             >
               done
             </motion.span>
-          </motion.div>
+          </div>
         ))}
 
         <div className="mprog">
           <div className="mprog__top">
-            <span>Automated</span>
-            <span>4 / 4</span>
+            <span>Running</span>
+            <span>4 steps</span>
           </div>
           <div className="mprog__track">
             <motion.div
               className="mprog__fill"
-              initial={{ scaleX: 0 }}
-              animate={play ? { scaleX: 1 } : {}}
-              transition={{ duration: steps.length * stepDelay, ease: 'linear' }}
+              animate={play ? { scaleX: [0, 1] } : { scaleX: 1 }}
+              transition={when(play, { duration: CYCLE, repeat: Infinity, ease: 'linear' })}
             />
           </div>
         </div>
@@ -200,6 +229,7 @@ function SeoMock({ play }: { play: boolean }) {
     { kw: 'safety training al khobar', from: 12, to: 3 },
     { kw: 'frisør fredrikstad', from: 9, to: 1 },
   ];
+
   return (
     <Frame label="Search positions" play={play}>
       <div className="mseo">
@@ -207,24 +237,31 @@ function SeoMock({ play }: { play: boolean }) {
           <motion.div
             key={row.kw}
             className="mseo__row"
-            initial={{ opacity: 0, y: 8 }}
-            animate={play ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: i * 0.12, ease: easeSoft }}
+            animate={play ? { borderColor: ['rgba(255,255,255,0.10)', 'rgba(34,211,238,0.38)', 'rgba(255,255,255,0.10)'] } : { borderColor: 'rgba(255,255,255,0.10)' }}
+            transition={when(play, loop(3.6, i * 1.1))}
           >
-            <span className="mrow__ico">{dot}</span>
+            <motion.span
+              className="mseo__up"
+              animate={play ? { y: [2, -2, 2], opacity: [0.5, 1, 0.5] } : { y: 0, opacity: 1 }}
+              transition={when(play, loop(3.6, i * 1.1))}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m6 15 6-6 6 6" />
+              </svg>
+            </motion.span>
             <span className="mseo__kw">{row.kw}</span>
             <span className="mseo__pos">
               <s>{row.from}</s>
               <motion.b
-                initial={{ opacity: 0, y: 6 }}
-                animate={play ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + i * 0.14, ease: easeSoft }}
+                animate={play ? { opacity: [0.6, 1, 0.6] } : { opacity: 1 }}
+                transition={when(play, loop(3.6, i * 1.1))}
               >
                 {row.to}
               </motion.b>
             </span>
           </motion.div>
         ))}
+
         <div className="mprog">
           <div className="mprog__top">
             <span>Impressions, 28 days</span>
@@ -233,9 +270,8 @@ function SeoMock({ play }: { play: boolean }) {
           <div className="mprog__track">
             <motion.div
               className="mprog__fill"
-              initial={{ scaleX: 0 }}
-              animate={play ? { scaleX: 0.82 } : {}}
-              transition={{ duration: 1.1, delay: 0.7, ease: easeSoft }}
+              animate={play ? { scaleX: [0.55, 0.88, 0.55] } : { scaleX: 0.82 }}
+              transition={when(play, loop(4))}
             />
           </div>
         </div>
@@ -251,33 +287,18 @@ const mocks = {
   seo: SeoMock,
 } as const;
 
-/** How long a full sequence plus its hold lasts before it replays. */
-const CYCLE_MS = 4200;
-
 export function ServiceMock({ id }: { id: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-
-  // `once: false` so the preview re-arms every time it comes back on screen.
-  const inView = useInView(ref, { amount: 0.35 });
-  const [cycle, setCycle] = useState(0);
-
-  /* Playing once meant the sequence had usually finished before anyone looked
-     at it. Replaying on a timer keeps the card alive while it is visible, and
-     stops entirely when it is not, so nothing animates off screen. */
-  useEffect(() => {
-    if (!inView || reduce) return;
-    const t = setInterval(() => setCycle((c) => c + 1), CYCLE_MS);
-    return () => clearInterval(t);
-  }, [inView, reduce]);
+  // `once: false` so the loop stops when the card scrolls away and picks back up on return
+  const inView = useInView(ref, { amount: 0.3 });
 
   const Mock = mocks[id as keyof typeof mocks];
   if (!Mock) return null;
 
   return (
     <div ref={ref}>
-      {/* remounting on `cycle` restarts every child animation from its initial */}
-      <Mock key={cycle} play={reduce ? true : inView} />
+      <Mock play={!reduce && inView} />
     </div>
   );
 }
