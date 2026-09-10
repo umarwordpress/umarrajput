@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { AnimatedWords } from '@/components/ui/AnimatedWords';
 import { Starfield } from '@/components/ui/Starfield';
 import { Icon } from '@/components/ui/Icon';
-import { proofPoints } from '@/data/stats';
+import { proofPoints } from '@/data/proof';
 import { site } from '@/lib/site';
 import { fadeUp, stagger } from '@/lib/motion';
 
@@ -25,8 +25,8 @@ export function Hero() {
         </motion.span>
 
         <AnimatedWords
-          text="I turn search visibility into measurable revenue."
-          highlight="measurable revenue."
+          text="I Build Digital Systems That Help Businesses Grow."
+          highlight="digital systems"
         />
 
         <motion.p
@@ -35,9 +35,17 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
         >
-          I&apos;m an SEO strategist and WordPress &amp; Shopify developer. I help founders,
-          agencies and eCommerce brands across the GCC and US fix what&apos;s broken technically,
-          rank for the terms that actually convert, and ship fast sites that hold those rankings.
+          Websites, custom web applications, business automations, and SEO, built to turn your
+          online presence into a system that works for your business.
+        </motion.p>
+
+        <motion.p
+          className="hero__services"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.62 }}
+        >
+          Web Development <i>·</i> Custom Applications <i>·</i> Automation <i>·</i> SEO
         </motion.p>
 
         <motion.div
@@ -46,12 +54,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.68 }}
         >
-            <Link href="#contact" className="btn btn--primary btn--lg">
-              Hire Me <Icon name="arrow-right" size={18} />
-            </Link>
-            <Link href="#work" className="btn btn--glass btn--lg">
-              View My Work
-            </Link>
+          <Link href="#contact" className="btn btn--primary btn--lg">
+            Start a Project <Icon name="arrow-right" size={18} />
+          </Link>
+          <Link href="#work" className="btn btn--glass btn--lg">
+            View My Work
+          </Link>
         </motion.div>
 
         <motion.div

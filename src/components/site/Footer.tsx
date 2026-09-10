@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container">
         <div className="ftr__top">
           <div>
-            <Link href="/" className="brand" aria-label="Umar Rajput — home">
+            <Link href="/" className="brand" aria-label="Umar Rajput, home">
               <span className="brand__mark" aria-hidden>
                 UR
               </span>
@@ -17,16 +17,17 @@ export function Footer() {
               </span>
             </Link>
             <p className="ftr__blurb">
-              SEO strategist and WordPress / Shopify developer building search visibility that
-              survives algorithm updates.
+              I build websites, custom web applications and business automations, with SEO to bring
+              the right people in.
             </p>
           </div>
 
           <div>
             <h3>Navigate</h3>
             <ul>
+              <li><Link href="/#services">Services</Link></li>
               <li><Link href="/#about">About</Link></li>
-              <li><Link href="/#work">Selected work</Link></li>
+              <li><Link href="/#work">Work</Link></li>
               <li><Link href="/work">Full portfolio</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
             </ul>

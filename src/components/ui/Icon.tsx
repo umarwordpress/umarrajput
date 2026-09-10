@@ -1,5 +1,5 @@
 type Name =
-  | 'search' | 'file' | 'layout' | 'bag' | 'pen' | 'trend'
+  | 'search' | 'file' | 'layout' | 'bag' | 'pen' | 'trend' | 'app' | 'automation'
   | 'arrow-right' | 'linkedin' | 'instagram' | 'x' | 'whatsapp'
   | 'mail' | 'phone' | 'pin' | 'download';
 
@@ -10,6 +10,8 @@ const paths: Record<Name, React.ReactNode> = {
   bag: <><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" /><path d="M3 6h18M16 10a4 4 0 0 1-8 0" /></>,
   pen: <><path d="M12 19l7-7 3 3-7 7-3-3Z" /><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z" /><path d="m2 2 7.6 7.6" /><circle cx="11" cy="11" r="2" /></>,
   trend: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
+  app: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 8.5h18M7.5 12.5h9M7.5 16h5" /></>,
+  automation: <><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z" /></>,
   'arrow-right': <path d="M5 12h14M13 6l6 6-6 6" />,
   linkedin: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></>,
   instagram: <><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></>,

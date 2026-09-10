@@ -17,7 +17,7 @@ function mulberry32(seed: number) {
 type Star = { x: number; y: number; size: number; delay: number; duration: number };
 
 /**
- * The drifting particle field behind the hero. Pure DOM — a handful of
+ * The drifting particle field behind the hero. Pure DOM, a handful of
  * absolutely positioned dots is cheaper than a canvas loop at this density.
  */
 export function Starfield({ count = 44, seed = 7 }: { count?: number; seed?: number }) {

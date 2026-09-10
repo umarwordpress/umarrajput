@@ -7,7 +7,7 @@ export type SiteProject = {
   platform: string;
   region: string;
   image: { src: string; alt: string; width: number; height: number };
-  /** Seconds for the hover scroll — longer pages scroll slower. */
+  /** Seconds for the hover scroll, longer pages scroll slower. */
   scrollDuration: number;
   cats: string[];
   regions: string[];
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   {
     kind: 'site',
     id: 'hair-beauty-studio',
-    tag: 'Web Design',
+    tag: 'Website Development',
     title: 'Hair & Beauty Studio',
     meta: 'Bilingual booking site with a hair-extension catalogue',
     platform: 'WordPress',
@@ -49,13 +49,13 @@ export const projects: Project[] = [
       height: 2400,
     },
     scrollDuration: 9,
-    cats: ['web-design', 'wordpress'],
+    cats: ['websites', 'wordpress'],
     regions: ['norway', 'europe'],
   },
   {
     kind: 'site',
     id: 'safety-training-institute',
-    tag: 'Web Design',
+    tag: 'Website Development',
     title: 'Safety Training Institute',
     meta: 'Course catalogue and certification enrolment funnel',
     platform: 'WordPress',
@@ -67,13 +67,13 @@ export const projects: Project[] = [
       height: 2600,
     },
     scrollDuration: 10,
-    cats: ['web-design', 'wordpress'],
+    cats: ['websites', 'wordpress'],
     regions: ['gcc', 'saudi-arabia'],
   },
   {
     kind: 'site',
     id: 'beds-mattress-store',
-    tag: 'eCommerce',
+    tag: 'Website Development',
     title: 'Beds & Mattress Store',
     meta: 'Promotional storefront with faceted category navigation',
     platform: 'eCommerce',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       height: 2755,
     },
     scrollDuration: 11,
-    cats: ['ecommerce', 'web-design'],
+    cats: ['websites', 'ecommerce'],
     regions: ['uk', 'europe'],
   },
   {
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     tag: 'SEO',
     title: 'Organic and AI search visibility for a training institute',
     client: 'Safety Training Institute · Al Khobar, Saudi Arabia',
-    body: "Search Console performance for the same client's website — organic impressions at an average position of 8.4, plus early visibility inside Google's generative AI answers.",
+    body: "Search Console performance for the same client's website, organic impressions at an average position of 8.4, plus early visibility inside Google's generative AI answers.",
     metrics: [
       { value: '51.4K', label: 'Search impressions' },
       { value: '856', label: 'Clicks from search' },
@@ -119,10 +119,10 @@ export const projects: Project[] = [
     id: 'training-institute-august',
     slug: 'training-institute-august',
     shots: 4,
-    tag: 'Local SEO',
+    tag: 'SEO',
     title: '450 profile interactions in a single month',
     client: 'Safety Training Institute · Al Khobar, Saudi Arabia',
-    body: 'One month of the same Business Profile, pulled out on its own. Across 31 days in August the profile drove 450 interactions — calls, direction requests and website visits from people already looking for training nearby — more than double what the same month produced a year earlier.',
+    body: 'One month of the same Business Profile, pulled out on its own. Across 31 days in August the profile drove 450 interactions, calls, direction requests and website visits from people already looking for training nearby, more than double what the same month produced a year earlier.',
     metrics: [
       { value: '450', label: 'Profile interactions · +129.6%' },
       { value: '318', label: 'Direction requests · +176.5%' },
@@ -137,7 +137,7 @@ export const projects: Project[] = [
       width: 820,
       height: 512,
     },
-    cats: ['local-seo'],
+    cats: ['seo'],
     regions: ['gcc', 'saudi-arabia'],
   },
   {
@@ -145,10 +145,10 @@ export const projects: Project[] = [
     id: 'hair-salon-fredrikstad',
     slug: 'hair-salon-fredrikstad',
     shots: 3,
-    tag: 'Local SEO',
+    tag: 'SEO',
     title: "Ranking a hair salon for its city's core search terms",
     client: 'Hair Salon · Fredrikstad, Norway',
-    body: 'Local SEO and Business Profile work targeting high-intent Norwegian-language queries — the top term alone surfaced the profile 1,852 times.',
+    body: 'Local SEO and Business Profile work targeting high-intent Norwegian-language queries, the top term alone surfaced the profile 1,852 times.',
     metrics: [
       { value: '11,430', label: 'People viewed the profile' },
       { value: '1,405', label: 'Profile interactions' },
@@ -163,7 +163,7 @@ export const projects: Project[] = [
       width: 820,
       height: 464,
     },
-    cats: ['local-seo'],
+    cats: ['seo'],
     regions: ['norway', 'europe'],
   },
 ];

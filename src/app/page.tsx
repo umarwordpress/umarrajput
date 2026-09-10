@@ -1,10 +1,11 @@
 import { Hero } from '@/components/sections/Hero';
-import { Stats } from '@/components/sections/Stats';
-import { About } from '@/components/sections/About';
+import { System } from '@/components/sections/System';
 import { Services } from '@/components/sections/Services';
-import { Markets } from '@/components/sections/Markets';
-import { Career } from '@/components/sections/Career';
+import { Difference } from '@/components/sections/Difference';
+import { Scenarios } from '@/components/sections/Scenarios';
 import { Work } from '@/components/sections/Work';
+import { About } from '@/components/sections/About';
+import { Career } from '@/components/sections/Career';
 import { Clients } from '@/components/sections/Clients';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Process } from '@/components/sections/Process';
@@ -21,12 +22,14 @@ const personSchema = {
   email: site.email,
   sameAs: [site.socials.linkedin, site.socials.instagram, site.socials.x],
   knowsAbout: [
-    'Technical SEO',
-    'Local SEO',
-    'Google Business Profile',
+    'Web development',
+    'Custom web applications',
+    'Business automation',
+    'Workflow automation',
     'WordPress development',
     'Shopify development',
-    'Core Web Vitals',
+    'Technical SEO',
+    'Local SEO',
   ],
 };
 
@@ -38,12 +41,13 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <Hero />
-      <Stats />
-      <About />
+      <System />
       <Services />
-      <Markets />
-      <Career />
+      <Difference />
+      <Scenarios />
       <Work />
+      <About />
+      <Career />
       <Clients />
       <Testimonials />
       <Process />

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     alternates: { canonical: `/work/${study.slug}` },
     openGraph: {
       type: 'article',
-      title: `${study.title} — case study`,
+      title: `${study.title}, case study`,
       description: study.summary,
       url: `${site.url}/work/${study.slug}`,
     },

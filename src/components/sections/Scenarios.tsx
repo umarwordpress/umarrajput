@@ -2,28 +2,28 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { markets } from '@/data/markets';
+import { scenarios } from '@/data/scenarios';
 import { fadeUp, stagger, inView, easeSoft } from '@/lib/motion';
 
-export function Markets() {
-  const [active, setActive] = useState(markets[0].id);
-  const panel = markets.find((m) => m.id === active)!;
+export function Scenarios() {
+  const [active, setActive] = useState(scenarios[0].id);
+  const panel = scenarios.find((m) => m.id === active)!;
 
   function onKeyDown(e: React.KeyboardEvent) {
-    const i = markets.findIndex((m) => m.id === active);
+    const i = scenarios.findIndex((m) => m.id === active);
     let next: number | null = null;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % markets.length;
-    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i - 1 + markets.length) % markets.length;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % scenarios.length;
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i - 1 + scenarios.length) % scenarios.length;
     if (e.key === 'Home') next = 0;
-    if (e.key === 'End') next = markets.length - 1;
+    if (e.key === 'End') next = scenarios.length - 1;
     if (next === null) return;
     e.preventDefault();
-    setActive(markets[next].id);
-    document.getElementById(`rtab-${markets[next].id}`)?.focus();
+    setActive(scenarios[next].id);
+    document.getElementById(`rtab-${scenarios[next].id}`)?.focus();
   }
 
   return (
-    <section className="section" id="markets">
+    <section className="section" id="what-we-build">
       <div className="container">
         <motion.div
           className="head head--center"
@@ -32,10 +32,10 @@ export function Markets() {
           whileInView="show"
           viewport={inView}
         >
-          <motion.span className="eyebrow" variants={fadeUp}>Global reach</motion.span>
-          <motion.h2 className="title" variants={fadeUp}>Markets I Work In</motion.h2>
+          <motion.span className="eyebrow" variants={fadeUp}>Common problems</motion.span>
+          <motion.h2 className="title" variants={fadeUp}>What Can We Build for Your Business?</motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Search behaves differently in every market. These are the ones I know well.
+            Pick whichever one sounds like your situation.
           </motion.p>
         </motion.div>
 
@@ -46,8 +46,8 @@ export function Markets() {
           viewport={inView}
           transition={{ duration: 0.6, ease: easeSoft }}
         >
-          <div className="rtabs" role="tablist" aria-label="Markets" onKeyDown={onKeyDown}>
-            {markets.map((m) => {
+          <div className="rtabs" role="tablist" aria-label="Common business problems" onKeyDown={onKeyDown}>
+            {scenarios.map((m) => {
               const on = m.id === active;
               return (
                 <button
@@ -93,11 +93,10 @@ export function Markets() {
                 transition={{ duration: 0.32, ease: easeSoft }}
               >
                 <div>
-                  {panel.primary && <span className="rbadge">Primary market</span>}
                   <h3>{panel.heading}</h3>
                   <p>{panel.body}</p>
                   <div className="chips">
-                    {panel.countries.map((c, i) => (
+                    {panel.tags.map((c, i) => (
                       <motion.span
                         key={c}
                         className="chip"
@@ -112,16 +111,13 @@ export function Markets() {
                 </div>
 
                 <aside className="raside">
-                  <b className="grad-text">
-                    {panel.stat.value}
-                    {panel.stat.unit && <i>{panel.stat.unit}</i>}
-                  </b>
-                  <span>{panel.stat.caption}</span>
+                  <span className="rbadge">{panel.service.label}</span>
+                  <p className="raside__caption">{panel.service.caption}</p>
                   <dl className="rfacts">
-                    <dt>Search languages</dt>
-                    <dd>{panel.languages}</dd>
-                    <dt>Focus</dt>
-                    <dd>{panel.focus}</dd>
+                    <dt>Typically</dt>
+                    <dd>{panel.typical}</dd>
+                    <dt>Starts with</dt>
+                    <dd>{panel.starts}</dd>
                   </dl>
                 </aside>
               </motion.div>

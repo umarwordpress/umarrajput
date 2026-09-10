@@ -27,19 +27,19 @@ const mono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: 'Umar Rajput — SEO Strategist & Web Developer',
+    default: 'Umar Rajput | Web Development, Automation & SEO',
     template: '%s · Umar Rajput',
   },
   description:
-    'SEO strategist and WordPress & Shopify developer working across the GCC, Nordics, US and UK. Technical audits, local SEO and fast, search-ready builds.',
+    'Umar Rajput builds websites, custom web applications and business automations, with SEO strategies that help businesses improve their online presence and search visibility.',
   openGraph: {
     type: 'website',
     locale: 'en_GB',
     siteName: site.name,
     url: site.url,
-    title: 'Umar Rajput — SEO Strategist & Web Developer',
+    title: 'Umar Rajput | Web Development, Automation & SEO',
     description:
-      'Technical SEO, local search and WordPress/Shopify builds with results pulled straight from Search Console and Google Business Profile.',
+      'Websites, custom web applications, business automation and SEO, built to work together as one system.',
   },
   twitter: { card: 'summary_large_image' },
   // preview deploys must not compete with production in the index

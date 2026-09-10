@@ -1,9 +1,9 @@
-# Umar Rajput — portfolio (Next.js)
+# Umar Rajput ,  portfolio (Next.js)
 
 Next.js 15 App Router · TypeScript · Framer Motion · zero UI libraries.
 
-Layout and motion language reference [twocore.ai](https://twocore.ai) — glass-pill
-nav, aurora ground, case-study structure — but the palette and type are its own:
+Layout and motion language reference [twocore.ai](https://twocore.ai) ,  glass-pill
+nav, aurora ground, case-study structure ,  but the palette and type are its own:
 a cyan → sky → blue system on a blue-black ground, not their purple.
 
 ```bash
@@ -21,7 +21,7 @@ npm run typecheck
 src/
 ├── app/
 │   ├── layout.tsx        fonts, metadata, theme bootstrap, aurora layers
-│   ├── page.tsx          home — composes every section
+│   ├── page.tsx          home ,  composes every section
 │   ├── globals.css       design tokens + primitives
 │   ├── ui.css            component styles
 │   ├── work/             portfolio index + client-side filter grid
@@ -39,7 +39,7 @@ src/
 ```
 
 **Content is data, not markup.** To add a project, a client logo, a service or a
-career entry, edit the matching file in `src/data/` — no component changes.
+career entry, edit the matching file in `src/data/` ,  no component changes.
 
 ---
 
@@ -67,10 +67,10 @@ Accents shift between themes, because cyan-400 is too pale on a light ground:
 | `--accent-teal` | `#14B8A6` | `#0D9488` |
 
 `--grad` and `--aurora` are built from those, so **changing the whole site's hue
-is a four-line edit in `globals.css`** — nothing downstream hardcodes a colour.
+is a four-line edit in `globals.css`** ,  nothing downstream hardcodes a colour.
 
 Primary buttons fill with `--accent` (cyan) and use dark ink `#04222B` rather
-than white — far higher contrast than any blue-on-white pairing, and it lifts
+than white ,  far higher contrast than any blue-on-white pairing, and it lifts
 off the blue-black ground. Buttons have **no motion**: colour transitions only,
 no hover lift, no press scale, no magnetic pull.
 
@@ -78,7 +78,7 @@ Fonts load through `next/font/google` (self-hosted at build time, no runtime
 request to Google): **Geist** body, **Bricolage Grotesque** display (variable,
 `opsz` + `wdth` axes), **Geist Mono** for eyebrows and numerals.
 
-Dark is the default and needs no stored preference — `:root` is dark, and light
+Dark is the default and needs no stored preference ,  `:root` is dark, and light
 only applies when `data-theme="light"` is present. If the site opens light for
 you, that is a saved choice in `localStorage`; toggle it back or clear site data.
 
@@ -100,13 +100,13 @@ Shared variants live in `src/lib/motion.ts` so timing is consistent everywhere.
 | `Career` | `useScroll` on the timeline + `useSpring` to fill the rail as it scrolls |
 | `Work` cards | full-page screenshots scroll on hover via `whileHover` variants |
 | `WorkGrid` | `LayoutGroup` + `AnimatePresence mode="popLayout"` so filtering re-flows smoothly |
-| `Services` | per-card cursor tilt (`useSpring` on rotateX/rotateY), gradient edge sweep, icon rotate-and-scale, arrow reveal — each card is its own variant controller so `hover` reaches every child |
+| `Services` | per-card cursor tilt (`useSpring` on rotateX/rotateY), gradient edge sweep, icon rotate-and-scale, arrow reveal ,  each card is its own variant controller so `hover` reaches every child |
 | `CaseNav` | sticky rail, `IntersectionObserver` marks the active section, `useScroll` drives the progress bar |
-| `Marquee` | `x: ['0%','-50%']` over duplicated children — a seamless loop |
+| `Marquee` | `x: ['0%','-50%']` over duplicated children ,  a seamless loop |
 | `Lightbox` | `AnimatePresence` modal, arrow-key and Escape support |
 | `ScrollProgress` | `useScroll` + `useSpring` gradient bar |
 
-Everything honours `prefers-reduced-motion` — Framer disables transforms
+Everything honours `prefers-reduced-motion` ,  Framer disables transforms
 automatically, and `globals.css` zeroes durations and delays.
 
 ### No-JS safety
@@ -126,17 +126,17 @@ highlight tiles → sticky section rail → numbered sections → results with t
 screenshot gallery → next-case-study link.
 
 Content lives in `src/data/caseStudies.ts`. Adding a project means adding one
-object — the route, metadata, breadcrumb JSON-LD and static params all follow.
+object ,  the route, metadata, breadcrumb JSON-LD and static params all follow.
 
 **The narrative sections need your review.** Every metric, period and market is
 taken from the dashboards already published on this site, and the prose is
-written from that same evidence — but only you know the project detail
+written from that same evidence ,  but only you know the project detail
 (constraints, timelines, who you worked with). Read them before launch.
 
 ## Contact form
 
 `src/app/api/contact/route.ts` validates server-side (client validation is UX
-only) and forwards to whatever `CONTACT_WEBHOOK_URL` points at — Zapier, Make, a
+only) and forwards to whatever `CONTACT_WEBHOOK_URL` points at ,  Zapier, Make, a
 Slack incoming webhook, your own CRM.
 
 ```bash
@@ -166,21 +166,21 @@ so bots learn nothing.
 
 Both were already flagged in the static site and carried over unchanged:
 
-- **`src/data/stats.ts`** — 150 audits, 4 years, 50 clients, 180% growth are
-  invented. Note they sit directly above the hero's *real* numbers, which reads
-  badly. Replace or remove.
-- **`src/data/testimonials.ts`** — five real clients (EUTC Global, Zain Aslam,
+- `src/data/stats.ts` has been removed. Its figures (150 audits, 4 years,
+  50 clients, 180% growth) were invented, so the strip now carries the
+  Build / Automate / Optimize / Grow steps instead.
+- **`src/data/testimonials.ts`** ,  five real clients (EUTC Global, Zain Aslam,
   Farrukh Bashir, Muhammad Rahim, Hamza Qayyum). The wording was drafted from the
-  working relationship in each case — **get each client to approve their quote
+  working relationship in each case ,  **get each client to approve their quote
   before launch**, since it is attributed to them by name, and replace `role`
   with their real company and job title.
   Photos: drop files in `public/assets/clients/` and set `avatar` on the entry.
-  For a company, set `logo` instead — it renders contained in a tile rather than
+  For a company, set `logo` instead ,  it renders contained in a tile rather than
   cropped to a circle (EUTC Global uses this). With neither, the card falls back
   to initials, so a missing image never breaks the layout.
-- **`src/data/career.ts`** — real companies and dates; `title` and `body` are
+- **`src/data/career.ts`** ,  real companies and dates; `title` and `body` are
   optional and currently empty, pending job titles and one-line descriptions.
-- **`src/data/caseStudies.ts`** — metrics are real; the narrative prose is
+- **`src/data/caseStudies.ts`** ,  metrics are real; the narrative prose is
   inferred from them and should be reviewed.
 
 ---
@@ -192,5 +192,5 @@ Both were already flagged in the static site and carried over unchanged:
 - Client-side JS is ~174 kB first load on the home page, mostly Framer Motion.
   Sections are client components because they animate; the pages themselves are
   statically prerendered.
-- The original static site still lives at the repository root and is untouched —
+- The original static site still lives at the repository root and is untouched , 
   this project is additive, so nothing breaks while you migrate.

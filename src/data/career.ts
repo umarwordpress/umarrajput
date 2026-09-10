@@ -14,7 +14,7 @@ export const career: Role[] = [
   {
     id: 'hwt',
     company: 'Hello World Technologies',
-    period: 'Jun 2023 — Jul 2024',
+    period: 'Jun 2023, Jul 2024',
     logo: {
       src: '/assets/logos/helloworldtechnologies.png',
       alt: 'Hello World Technologies logo',
@@ -25,7 +25,7 @@ export const career: Role[] = [
   {
     id: 'itcentre',
     company: 'IT Centre',
-    period: 'Jun 2023 — Jul 2024',
+    period: 'Jun 2023, Jul 2024',
     note: 'Rahim Yar Khan',
     logo: {
       src: '/assets/logos/itcentre-mark.png',
@@ -37,13 +37,13 @@ export const career: Role[] = [
   {
     id: 'faj',
     company: 'FAJ IT Solutions',
-    period: 'Aug 2024 — Feb 2025',
+    period: 'Aug 2024, Feb 2025',
     logo: { src: '/assets/logos/faj.png', alt: 'FAJ IT Solutions logo', width: 80, height: 80 },
   },
   {
     id: 'navttc',
     company: 'NAVTTC',
-    period: 'Mar 2025 — Dec 2025',
+    period: 'Mar 2025, Dec 2025',
     logo: {
       src: '/assets/logos/navttc.png',
       alt: 'NAVTTC logo',
@@ -55,7 +55,7 @@ export const career: Role[] = [
   {
     id: 'centnine',
     company: 'CentNine',
-    period: 'Feb 2026 — Present',
+    period: 'Feb 2026, Present',
     current: true,
     logo: { src: '/assets/logos/centnine.png', alt: 'CentNine logo', width: 520, height: 115 },
   },

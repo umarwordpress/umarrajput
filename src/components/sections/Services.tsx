@@ -92,6 +92,12 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
       </motion.h3>
       <motion.p style={{ translateZ: 10 }}>{service.body}</motion.p>
 
+      <ul className="svc__points">
+        {service.points.map((point) => (
+          <li key={point}>{point}</li>
+        ))}
+      </ul>
+
       <motion.span
         className="svc__more"
         aria-hidden
@@ -119,10 +125,10 @@ export function Services() {
           whileInView="show"
           viewport={inView}
         >
-          <motion.span className="eyebrow" variants={fadeUp}>Capabilities</motion.span>
-          <motion.h2 className="title" variants={fadeUp}>What I Do</motion.h2>
+          <motion.span className="eyebrow" variants={fadeUp}>Services</motion.span>
+          <motion.h2 className="title" variants={fadeUp}>What I Build</motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Six services that cover the full path from crawl errors to conversions.
+            Four services that work as one system. Most projects use two or three of them together.
           </motion.p>
         </motion.div>
 

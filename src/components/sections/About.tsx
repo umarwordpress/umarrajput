@@ -12,24 +12,25 @@ export function About() {
         <motion.div variants={stagger(0.09)} initial="hidden" whileInView="show" viewport={inView}>
           <motion.span className="eyebrow" variants={fadeUp}>About</motion.span>
           <motion.h2 className="title" variants={fadeUp} style={{ margin: '18px 0 22px' }}>
-            Search strategy, built on <span className="grad-text">evidence</span> — not guesswork.
+            I Build Websites, Applications and Systems That Solve Real{' '}
+            <span className="grad-text">Business Problems.</span>
           </motion.h2>
           <motion.p variants={fadeUp}>
-            I&apos;m <strong>Umar Rajput</strong>, an SEO strategist and web developer with 4+ years
-            spent between Search Console dashboards and code editors. Most of my work sits at the
-            intersection of the two: diagnosing why a site isn&apos;t ranking, then actually building
-            the fix instead of handing over a PDF and walking away.
+            I&apos;m <strong>Umar Rajput</strong>, a developer working across web development,
+            business automation and SEO. I started with websites and search, then moved into
+            building the software and workflows that sit behind them, because that is where most of
+            the actual problems turned out to be.
           </motion.p>
           <motion.p variants={fadeUp}>
-            I work with service businesses, eCommerce brands and agencies across Saudi Arabia,
-            Qatar, the UAE and the United States. That usually means technical audits, indexation
-            and Core Web Vitals cleanup, on-page and content architecture, and custom WordPress or
-            Shopify builds engineered to load fast and stay crawlable.
+            Today I work with service businesses, e-commerce brands and agencies across the GCC,
+            the Nordics, the UK and the US. That might mean a WordPress or Shopify build, a custom
+            web application shaped around a specific workflow, connecting the tools a business
+            already pays for, or the technical and local SEO work that gets it found.
           </motion.p>
           <motion.p variants={fadeUp}>
-            My approach is deliberately unglamorous: measure the baseline, prioritise by impact,
-            ship in small increments, and report honestly on what moved. If a tactic isn&apos;t
-            earning its place in the data, it gets cut.
+            It is just me, not an agency, so you talk to the person writing the code. My approach is
+            deliberately unglamorous: understand the problem first, build the smallest thing that
+            solves it, and be honest about what worked.
           </motion.p>
         </motion.div>
 

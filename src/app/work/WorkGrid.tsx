@@ -8,10 +8,9 @@ import { stagger, inView } from '@/lib/motion';
 
 const CATEGORIES = [
   { id: 'all', label: 'All work' },
-  { id: 'web-design', label: 'Web Design' },
+  { id: 'websites', label: 'Website Development' },
   { id: 'wordpress', label: 'WordPress' },
-  { id: 'ecommerce', label: 'eCommerce' },
-  { id: 'local-seo', label: 'Local SEO' },
+  { id: 'ecommerce', label: 'E-commerce' },
   { id: 'seo', label: 'SEO' },
 ];
 

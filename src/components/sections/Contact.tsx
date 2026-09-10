@@ -31,7 +31,7 @@ export function Contact() {
 
   const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
     values.subject || 'Project enquiry',
-  )}&body=${encodeURIComponent(`${values.message}\n\n— ${values.name} (${values.email})`)}`;
+  )}&body=${encodeURIComponent(`${values.message}\n\n, ${values.name} (${values.email})`)}`;
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -49,7 +49,7 @@ export function Contact() {
         body: JSON.stringify(values),
       });
       if (res.status === 503) {
-        // No delivery endpoint wired up yet — hand off to the mail client.
+        // No delivery endpoint wired up yet, hand off to the mail client.
         setStatus('fallback');
         return;
       }
@@ -69,7 +69,7 @@ export function Contact() {
             Let&apos;s <span className="grad-text">Connect</span>
           </motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Based in the GCC, working across time zones. I reply to every serious enquiry within one
+            Tell me what you are trying to build or fix. I reply to every serious enquiry within one
             business day.
           </motion.p>
 
@@ -127,7 +127,7 @@ export function Contact() {
               >
                 <h3 style={{ fontSize: '1.3rem', marginBottom: 10 }}>Message sent</h3>
                 <p style={{ color: 'var(--muted)' }}>
-                  Thanks — I&apos;ll get back to you within one business day.
+                  Thanks, I&apos;ll get back to you within one business day.
                 </p>
               </motion.div>
             ) : (
@@ -183,7 +183,7 @@ export function Contact() {
                     id="c-subject"
                     value={values.subject}
                     onChange={(e) => set('subject', e.target.value)}
-                    placeholder="Technical audit, Shopify build, local SEO…"
+                    placeholder="New website, custom application, automation, SEO…"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ export function Contact() {
                     value={values.message}
                     onChange={(e) => set('message', e.target.value)}
                     aria-invalid={!!errors.message}
-                    placeholder="A little about your site, your market, and what you're trying to fix…"
+                    placeholder="A little about your business, and what you're trying to build, improve or automate…"
                   />
                   {errors.message && <span className="field__err">{errors.message}</span>}
                 </div>
@@ -222,7 +222,7 @@ export function Contact() {
 
                 <p className="form__note">
                   {status === 'fallback'
-                    ? 'Email delivery is not configured yet — this opens your mail app instead.'
+                    ? 'Email delivery is not configured yet, this opens your mail app instead.'
                     : `Or email me directly at ${site.email}`}
                 </p>
               </motion.form>

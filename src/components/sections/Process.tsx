@@ -16,9 +16,10 @@ export function Process() {
           viewport={inView}
         >
           <motion.span className="eyebrow" variants={fadeUp}>Process</motion.span>
-          <motion.h2 className="title" variants={fadeUp}>How I Work</motion.h2>
+          <motion.h2 className="title" variants={fadeUp}>How a Project Runs</motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Five steps, repeated. Nothing ships without a measured reason.
+            Six steps. Not every project needs all of them, and I will tell you which ones yours
+            does not.
           </motion.p>
         </motion.div>
 

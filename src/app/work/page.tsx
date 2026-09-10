@@ -4,9 +4,9 @@ import { Clients } from '@/components/sections/Clients';
 import { Cta } from '@/components/sections/Cta';
 
 export const metadata: Metadata = {
-  title: 'Portfolio — websites and search campaigns',
+  title: 'Portfolio, websites and search campaigns',
   description:
-    'Web design, eCommerce and local SEO projects with performance data taken straight from Google Search Console and Google Business Profile.',
+    'Websites, e-commerce builds and SEO projects, with performance data taken straight from the client\u2019s own Google Search Console and Business Profile dashboards.',
   alternates: { canonical: '/work' },
 };
 
@@ -21,9 +21,9 @@ export default function WorkPage() {
               Work that shows its <span className="grad-text">receipts</span>.
             </h1>
             <p className="lede">
-              Websites I designed and built, and local-search campaigns with numbers taken straight
-              from the client&apos;s own dashboards. Hover any website to scroll the full page; click
-              any campaign to open its performance screenshots.
+              Each project below covers what the client needed, what I built, and what it changed.
+              Numbers come from the client&apos;s own dashboards. Where there is no measurable result
+              to show, the work is simply described as it was.
             </p>
           </div>
 

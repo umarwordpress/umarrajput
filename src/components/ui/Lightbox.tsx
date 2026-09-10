@@ -48,7 +48,7 @@ export function Lightbox({
           className="lb"
           role="dialog"
           aria-modal="true"
-          aria-label={`${gallery.title} — screenshots`}
+          aria-label={`${gallery.title}, screenshots`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -79,7 +79,7 @@ export function Lightbox({
               >
                 <Image
                   src={`/assets/work/${gallery.slug}/${index + 1}.jpg`}
-                  alt={`${gallery.title} — screenshot ${index + 1} of ${gallery.shots}`}
+                  alt={`${gallery.title}, screenshot ${index + 1} of ${gallery.shots}`}
                   width={1600}
                   height={1000}
                   className="lb__img"

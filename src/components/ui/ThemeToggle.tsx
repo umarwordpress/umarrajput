@@ -20,7 +20,7 @@ export function ThemeToggle() {
     try {
       localStorage.setItem('theme', next);
     } catch {
-      /* private mode — the choice just will not persist */
+      /* private mode, the choice just will not persist */
     }
   }
 

@@ -3,7 +3,7 @@
  *
  * Every metric, period and market here is taken from the client dashboards
  * already published on this site. The narrative sections are written from
- * that same evidence — REVIEW THEM before launch and add any project detail
+ * that same evidence, REVIEW THEM before launch and add any project detail
  * only you know (budgets, constraints, timelines, who you worked with).
  */
 
@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     title: '450 profile interactions in a single month',
     subtitle: 'Turning a training institute’s Google Business Profile into its main enquiry channel',
     summary:
-      'In August 2026 alone the profile drove 450 interactions — calls, direction requests and website visits from people already searching for training nearby. More than double the same month a year earlier.',
+      'In August 2026 alone the profile drove 450 interactions: calls, direction requests and website visits from people already searching for training nearby. More than double the same month a year earlier.',
     meta: [
       { label: 'Client', value: 'Safety training institute' },
       { label: 'Market', value: 'Al Khobar, Saudi Arabia' },
@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
         title: 'The context',
         kind: 'prose',
         body: [
-          'Vocational and safety training in the Eastern Province is a proximity business. People search for a certification they need, look at what is close to them, and call. Very little of that journey happens on a traditional results page — it happens in Maps, in the local pack, and inside the Business Profile itself.',
+          'Vocational and safety training in the Eastern Province is a proximity business. People search for a certification they need, look at what is close to them, and call. Very little of that journey happens on a traditional results page, it happens in Maps, in the local pack, and inside the Business Profile itself.',
           'That makes the profile the storefront. If the services are not structured, the categories are wrong, or the reviews are thin, the listing loses to a competitor two streets away regardless of how good the website is.',
         ],
       },
@@ -81,7 +81,7 @@ export const caseStudies: CaseStudy[] = [
           'Discovery was happening in Maps, but the profile was not structured to convert that attention into calls or visits.',
           'Course and certification offerings were not expressed as distinct services, so the listing surfaced for the brand but not for what people actually search.',
           'Review volume and freshness were not keeping pace with competitors in the same catchment.',
-          'The profile and the website were not reinforcing each other — each was optimised, if at all, in isolation.',
+          'The profile and the website were not reinforcing each other, each was optimised, if at all, in isolation.',
         ],
       },
       {
@@ -93,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
           'Restructured the profile around the services people search for, in both Arabic and English, rather than around internal course names.',
           'Built a review-generation routine into the enrolment process so new reviews arrive steadily instead of in bursts.',
           'Aligned the website’s service pages with the profile so a searcher who clicks through lands on the thing they were looking for.',
-          'Tracked interactions — calls, directions, website clicks — as the outcome, not impressions.',
+          'Tracked interactions (calls, directions, website clicks) as the outcome, not impressions.',
         ],
       },
       {
@@ -108,7 +108,7 @@ export const caseStudies: CaseStudy[] = [
         title: 'Why this month matters',
         kind: 'prose',
         body: [
-          'A six-month total can hide a slow start. Pulling a single month out and comparing it like-for-like against the same month a year earlier removes seasonality from the picture — August against August, same enrolment cycle, same weather, same competitors.',
+          'A six-month total can hide a slow start. Pulling a single month out and comparing it like-for-like against the same month a year earlier removes seasonality from the picture: August against August, same enrolment cycle, same weather, same competitors.',
           'Direction requests grew fastest at +176.5%. That is the metric worth watching for a physical training centre: someone asking for directions has already decided to turn up.',
         ],
       },
@@ -122,7 +122,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Organic and AI search visibility for a training institute',
     subtitle: 'Search Console performance for the same client’s website, including early visibility inside Google’s AI answers',
     summary:
-      '51.4K impressions and 856 clicks in 28 days at an average position of 8.4 — plus 9.76K impressions inside Google’s generative AI answers, a surface most local sites are not appearing in yet.',
+      '51.4K impressions and 856 clicks in 28 days at an average position of 8.4, plus 9.76K impressions inside Google’s generative AI answers, a surface most local sites are not appearing in yet.',
     meta: [
       { label: 'Client', value: 'Safety training institute' },
       { label: 'Market', value: 'Al Khobar, Saudi Arabia' },
@@ -165,7 +165,7 @@ export const caseStudies: CaseStudy[] = [
         kind: 'list',
         items: [
           'Course pages existed but were not mapped to the way people actually phrase certification searches.',
-          'Site structure made it hard for crawlers — and for readers — to see the relationship between a course, its accreditation and its outcomes.',
+          'Site structure made it hard for crawlers, and for readers, to see the relationship between a course, its accreditation and its outcomes.',
           'Nothing was in place to earn visibility in AI-generated answers, which increasingly sit above the organic results for exactly this kind of informational query.',
         ],
       },
@@ -176,7 +176,7 @@ export const caseStudies: CaseStudy[] = [
         kind: 'list',
         items: [
           'Mapped keywords to intent rather than volume, so each page answers one question properly instead of several badly.',
-          'Rebuilt the content architecture around topical clusters — course, accreditation, outcome — with internal linking that reflects it.',
+          'Rebuilt the content architecture around topical clusters (course, accreditation, outcome) with internal linking that reflects it.',
           'Added structured data so the entities on the page are unambiguous to a machine.',
           'Wrote for answer-engine extraction: direct answers near the top, clear headings, no burying the point.',
         ],
@@ -207,7 +207,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Ranking a hair salon for its city’s core search terms',
     subtitle: 'Norwegian-language local SEO where one high-intent term carries a whole location',
     summary:
-      '11,430 profile views and 823 clicks through to the website over six months, driven by a small set of Norwegian-language queries — the top term alone surfaced the profile 1,852 times.',
+      '11,430 profile views and 823 clicks through to the website over six months, driven by a small set of Norwegian-language queries. The top term alone surfaced the profile 1,852 times.',
     meta: [
       { label: 'Client', value: 'Hair salon' },
       { label: 'Market', value: 'Fredrikstad, Norway' },
@@ -239,7 +239,7 @@ export const caseStudies: CaseStudy[] = [
         kind: 'prose',
         body: [
           'Norwegian local search is a smaller pool than English, and that changes the maths. Volume is low enough that chasing broad terms is wasted effort, but intent is high enough that a handful of the right queries can fill a booking calendar.',
-          'Fredrikstad is also a city where a salon competes with a specific, knowable set of rivals — not an endless national market. That makes the target concrete.',
+          'Fredrikstad is also a city where a salon competes with a specific, knowable set of rivals, not an endless national market. That makes the target concrete.',
         ],
       },
       {
@@ -262,7 +262,7 @@ export const caseStudies: CaseStudy[] = [
           'Identified the small set of Norwegian queries with genuine booking intent, and optimised the profile around those rather than translated English terms.',
           'Restructured the service list so each treatment is discoverable on its own.',
           'Tightened the route from profile to booking, so a click through to the site lands somewhere that converts.',
-          'Kept reviews arriving steadily — in a small market, recency is visible.',
+          'Kept reviews arriving steadily. In a small market, recency is visible.',
         ],
       },
       {
@@ -318,7 +318,7 @@ export const caseStudies: CaseStudy[] = [
         kind: 'prose',
         body: [
           'A studio running two locations needed one site that could speak to both, in two languages, without turning into a maze. Most visitors arrive on a phone, already close to deciding, and want the treatment list and a way to book.',
-          'The same client’s local SEO is covered in a separate case study — the site and the Business Profiles were built to reinforce each other.',
+          'The same client’s local SEO is covered in a separate case study. The site and the Business Profiles were built to reinforce each other.',
         ],
       },
       {
@@ -401,7 +401,7 @@ export const caseStudies: CaseStudy[] = [
         title: 'How I built it',
         kind: 'list',
         items: [
-          'Made every course its own structured page — duration, accreditation, outcomes — rather than rows in a table.',
+          'Made every course its own structured page (duration, accreditation, outcomes) rather than rows in a table.',
           'Added schema so the certification entities are explicit to search engines.',
           'Split the enrolment path early, so an individual and a company each get a route that fits.',
           'Built the information architecture around topical clusters, which is what the search results later reflected.',
@@ -417,7 +417,7 @@ export const caseStudies: CaseStudy[] = [
     title: 'Promotional storefront for a beds & mattress retailer',
     subtitle: 'Faceted category navigation for a catalogue where every product has six variants',
     summary:
-      'A UK bed and mattress store built around faceted browsing — size, firmness, type — with promotional merchandising that does not break the crawlable URL structure.',
+      'A UK bed and mattress store built around faceted browsing, size, firmness, type, with promotional merchandising that does not break the crawlable URL structure.',
     meta: [
       { label: 'Client', value: 'Beds & mattress retailer' },
       { label: 'Market', value: 'United Kingdom' },
@@ -444,7 +444,7 @@ export const caseStudies: CaseStudy[] = [
         kind: 'prose',
         body: [
           'Bed retail is a filtering problem. A customer knows their size, roughly knows their firmness, and wants to narrow a large catalogue quickly. Every one of those filters is also a potential URL, and left unmanaged they multiply into thousands of near-duplicate pages that dilute the whole site.',
-          'On top of that sits promotional merchandising — sales, bundles, finance offers — which tends to be bolted on in ways that break the structure underneath.',
+          'On top of that sits promotional merchandising (sales, bundles, finance offers) which tends to be bolted on in ways that break the structure underneath.',
         ],
       },
       {
@@ -467,7 +467,7 @@ export const caseStudies: CaseStudy[] = [
           'Decided deliberately which facet combinations deserve to be indexable pages and which should stay filters, then enforced it.',
           'Gave the commercially meaningful combinations real content, so they can rank rather than merely exist.',
           'Kept promotional merchandising in a layer that can change weekly without touching URLs or structure.',
-          'Optimised the product imagery pipeline — the heaviest thing on any furniture store.',
+          'Optimised the product imagery pipeline, the heaviest thing on any furniture store.',
         ],
       },
     ],

@@ -22,7 +22,7 @@ export function Header() {
       transition={{ duration: 0.6, ease: [0.22, 0.7, 0.2, 1], delay: 0.1 }}
     >
       <div className="hdr__inner">
-        <Link href="/" className="brand" aria-label="Umar Rajput — home">
+        <Link href="/" className="brand" aria-label="Umar Rajput, home">
           <span className="brand__mark" aria-hidden>
             UR
           </span>
@@ -45,7 +45,7 @@ export function Header() {
         <div className="hdr__actions">
           <ThemeToggle />
             <Link href="/#contact" className="btn btn--primary btn--sm">
-              Hire Me
+              Start a Project
             </Link>
           <button
             type="button"

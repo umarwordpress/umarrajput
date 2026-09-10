@@ -18,15 +18,17 @@ export function Cta() {
           transition={{ duration: 0.6, ease: easeSoft }}
         >
           <h2>
-            Have a Project <span className="grad-text">in Mind?</span>
+            Have an Idea, Problem or Process{' '}
+            <span className="grad-text">You Want to Improve?</span>
           </h2>
           <p>
-            Tell me what&apos;s not working. I&apos;ll tell you straight whether I can fix it — and
-            roughly what it takes.
+            Tell me what you are trying to build, improve or automate. I can help you find the right
+            digital solution, whether that is a website, a custom web application, business
+            automation or an SEO strategy.
           </p>
           <div className="cta__actions">
               <Link href="#contact" className="btn btn--primary btn--lg">
-                Hire Me <Icon name="arrow-right" size={18} />
+                Let&apos;s Build Something <Icon name="arrow-right" size={18} />
               </Link>
               <a
                 href={site.socials.whatsapp}

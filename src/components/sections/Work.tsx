@@ -139,10 +139,11 @@ export function Work() {
           viewport={inView}
         >
           <motion.span className="eyebrow" variants={fadeUp}>Selected work</motion.span>
-          <motion.h2 className="title" variants={fadeUp}>Projects &amp; Results</motion.h2>
+          <motion.h2 className="title" variants={fadeUp}>What I&apos;ve Built</motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Websites I designed and built, plus local-search campaigns with results pulled straight
-            from Google Business Profile. Hover any site to scroll the full page.
+            What the client needed, what I built, and what it changed. Where there are numbers, they
+            come straight from the client&apos;s own dashboards. Where there are not, the work is
+            described as it was.
           </motion.p>
         </motion.div>
 

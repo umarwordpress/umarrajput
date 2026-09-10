@@ -30,7 +30,7 @@ export function Career() {
           <motion.span className="eyebrow" variants={fadeUp}>Career</motion.span>
           <motion.h2 className="title" variants={fadeUp}>Where I&apos;ve Worked</motion.h2>
           <motion.p className="lede" variants={fadeUp}>
-            Five roles since 2023 — the through-line is always organic growth.
+            Five roles since 2023, the through-line is always organic growth.
           </motion.p>
         </motion.div>
 

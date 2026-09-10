@@ -27,7 +27,7 @@ export function Reveal({
   as = 'div',
   id,
 }: Props) {
-  // motion.create() must not run on every render — it would remount the tree.
+  // motion.create() must not run on every render, it would remount the tree.
   const MotionTag = useMemo(() => motion.create(as), [as]);
 
   return (

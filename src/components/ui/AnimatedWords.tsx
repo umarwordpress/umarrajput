@@ -38,7 +38,7 @@ export function AnimatedWords({
       style={{ perspective: 800 }}
     >
       {words.map((word, i) => {
-        const clean = word.replace(/[.,—]/g, '').toLowerCase();
+        const clean = word.replace(/[.,]/g, '').toLowerCase();
         const isHi = hi.includes(clean);
         return (
           <span

@@ -1,6 +1,6 @@
 import type { Variants, Easing } from 'framer-motion';
 
-/** Shared easing — matches the CSS `--ease-out` token. */
+/** Shared easing, matches the CSS `--ease-out` token. */
 export const easeOut: Easing = [0, 0, 0.2, 1];
 export const easeSoft: Easing = [0.22, 0.7, 0.2, 1];
 

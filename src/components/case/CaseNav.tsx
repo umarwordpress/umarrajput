@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import type { Section } from '@/data/caseStudies';
 
-/** Sticky section rail — highlights whichever section is currently on screen. */
+/** Sticky section rail, highlights whichever section is currently on screen. */
 export function CaseNav({ sections }: { sections: Section[] }) {
   const [active, setActive] = useState(sections[0]?.n ?? '');
 

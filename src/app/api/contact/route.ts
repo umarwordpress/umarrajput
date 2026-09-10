@@ -7,7 +7,7 @@ type Payload = {
   email?: string;
   subject?: string;
   message?: string;
-  /** Honeypot — real users never fill this. */
+  /** Honeypot, real users never fill this. */
   company?: string;
 };
 
@@ -16,7 +16,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
 /**
  * Forwards a contact enquiry to whatever is configured in the environment.
  *
- *   CONTACT_WEBHOOK_URL  — any endpoint that accepts JSON (Zapier, Make,
+ *   CONTACT_WEBHOOK_URL , any endpoint that accepts JSON (Zapier, Make,
  *                          a Slack incoming webhook, your own CRM).
  *
  * With nothing configured the route answers 503 and the form falls back to
