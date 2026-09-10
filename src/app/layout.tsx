@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono, Bricolage_Grotesque } from 'next/font/google';
 import { Header } from '@/components/site/Header';
 import { Footer } from '@/components/site/Footer';
-import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { site, isPreview } from '@/lib/site';
 import './globals.css';
 import './ui.css';
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="aurora" aria-hidden />
         <div className="grain" aria-hidden />
-        <ScrollProgress />
         <a className="skip" href="#main">
           Skip to content
         </a>

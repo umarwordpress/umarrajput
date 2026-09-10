@@ -156,7 +156,7 @@ export const projects: Project[] = [
       { value: '5,023', label: 'Searches surfaced the profile' },
     ],
     source: '4.5 · 115 Google reviews',
-    period: 'Mar – Aug 2026',
+    period: 'Mar to Aug 2026',
     headline: { value: '11,430', label: 'profile views' },
     thumb: {
       alt: 'Google Business Profile performance showing 11,430 profile views for a hair salon in Fredrikstad, Norway',

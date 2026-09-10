@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion';
 import { services, type Service } from '@/data/services';
 import { Icon } from '@/components/ui/Icon';
+import { ServiceMock } from '@/components/mocks/ServiceMock';
 import { fadeUp, stagger, inView, easeSoft } from '@/lib/motion';
 
 function ServiceCard({ service, n, i }: { service: Service; n: number; i: number }) {
@@ -11,8 +12,8 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
   /* cursor position drives both the glow and a subtle 3D tilt */
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
-  const rx = useSpring(useTransform(my, [0, 1], [7, -7]), { stiffness: 220, damping: 20 });
-  const ry = useSpring(useTransform(mx, [0, 1], [-7, 7]), { stiffness: 220, damping: 20 });
+  const rx = useSpring(useTransform(my, [0, 1], [3, -3]), { stiffness: 220, damping: 22 });
+  const ry = useSpring(useTransform(mx, [0, 1], [-3, 3]), { stiffness: 220, damping: 22 });
 
   function onMove(e: React.MouseEvent<HTMLElement>) {
     const el = e.currentTarget;
@@ -51,6 +52,8 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
     >
       <span className="svc__glow" aria-hidden />
 
+      <ServiceMock id={service.id} />
+
       {/* gradient edge that sweeps in from the left */}
       <motion.span
         className="svc__edge"
@@ -58,18 +61,6 @@ function ServiceCard({ service, n, i }: { service: Service; n: number; i: number
         variants={{ hidden: { scaleX: 0 }, show: { scaleX: 0 }, hover: { scaleX: 1 } }}
         transition={{ duration: 0.5, ease: easeSoft }}
       />
-
-      <motion.span
-        className="svc__n"
-        aria-hidden
-        variants={{
-          hidden: { opacity: 0.5, y: 0 },
-          show: { opacity: 0.5, y: 0 },
-          hover: { opacity: 1, y: -2 },
-        }}
-      >
-        {String(n).padStart(2, '0')}
-      </motion.span>
 
       <motion.span
         className="svc__icon"

@@ -212,7 +212,7 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Client', value: 'Hair salon' },
       { label: 'Market', value: 'Fredrikstad, Norway' },
       { label: 'Services', value: 'Local SEO · Business Profile' },
-      { label: 'Period', value: 'Mar – Aug 2026' },
+      { label: 'Period', value: 'Mar to Aug 2026' },
     ],
     stack: ['Google Business Profile', 'Norwegian SERPs', 'Booking-led website', 'Review generation'],
     highlights: [
