@@ -18,19 +18,13 @@ export function About() {
           <motion.p variants={fadeUp}>
             I&apos;m <strong>Umar Rajput</strong>, a developer working across web development,
             business automation and SEO. I started with websites and search, then moved into
-            building the software and workflows that sit behind them, because that is where most of
-            the actual problems turned out to be.
+            building the software and workflows behind them, because that is where most of the
+            real problems turned out to be.
           </motion.p>
           <motion.p variants={fadeUp}>
-            Today I work with service businesses, e-commerce brands and agencies across the GCC,
-            the Nordics, the UK and the US. That might mean a WordPress or Shopify build, a custom
-            web application shaped around a specific workflow, connecting the tools a business
-            already pays for, or the technical and local SEO work that gets it found.
-          </motion.p>
-          <motion.p variants={fadeUp}>
-            It is just me, not an agency, so you talk to the person writing the code. My approach is
-            deliberately unglamorous: understand the problem first, build the smallest thing that
-            solves it, and be honest about what worked.
+            I work with service businesses, e-commerce brands and agencies across the GCC, the
+            Nordics, the UK and the US. It is just me, not an agency, so you talk to the person
+            writing the code.
           </motion.p>
         </motion.div>
 

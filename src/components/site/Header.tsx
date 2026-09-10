@@ -85,15 +85,6 @@ export function Header() {
                   </Link>
                 </motion.li>
               ))}
-              <motion.li
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.06 * nav.length + 0.05 }}
-              >
-                <Link href="/#contact" onClick={() => setOpen(false)}>
-                  Contact
-                </Link>
-              </motion.li>
             </ul>
           </motion.nav>
         )}

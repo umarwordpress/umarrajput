@@ -887,7 +887,10 @@
   .hdr__inner { justify-content: space-between; }
   .hdr__actions { margin-left: auto; }
   .about, .contact { grid-template-columns: 1fr; }
-  .about__media { max-width: 420px; margin-inline: auto; }
+  /* `margin-inline: auto` stops a grid item stretching, so it sizes to its
+     content. The image inside is width:100%, which makes that circular and
+     collapses the wrapper to nothing. An explicit width breaks the loop. */
+  .about__media { width: 100%; max-width: 420px; margin-inline: auto; order: -1; }
   .rail { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 14px; }
   .rail__line, .rail-item::before { display: none; }
   .rail-node { position: static; transform: none; margin-bottom: 12px; }
@@ -899,6 +902,10 @@
 @media (max-width: 680px) {
   .svc-grid, .work-grid, .proofs { grid-template-columns: 1fr; }
   .rail { grid-template-columns: 1fr; gap: 12px; }
+  /* On a 390px phone the brand, toggle, CTA and burger together pushed the
+     burger off screen, so the menu could not be opened at all. The CTA goes;
+     the mobile menu carries Contact. */
+  .hdr__actions .btn { display: none; }
   .steps { grid-template-columns: 1fr; }
   .form__row { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; }
