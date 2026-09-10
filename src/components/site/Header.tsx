@@ -8,6 +8,7 @@ import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -34,11 +35,53 @@ export function Header() {
         {/* floating pill nav, twocore-style */}
         <nav className="hdr__nav" aria-label="Primary">
           <ul>
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
-              </li>
-            ))}
+            {nav.map((item) =>
+              item.children ? (
+                <li
+                  key={item.href}
+                  className="hdr__has-menu"
+                  onMouseEnter={() => setMenu(item.href)}
+                  onMouseLeave={() => setMenu(null)}
+                  onFocus={() => setMenu(item.href)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node)) setMenu(null);
+                  }}
+                >
+                  <Link href={item.href} aria-expanded={menu === item.href} aria-haspopup="true">
+                    {item.label}
+                    <svg className="hdr__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </Link>
+
+                  <AnimatePresence>
+                    {menu === item.href && (
+                      <motion.ul
+                        className="hdr__menu"
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.22, ease: [0.22, 0.7, 0.2, 1] }}
+                      >
+                        {item.children.map((c) => (
+                          <li key={c.href}>
+                            <Link href={c.href} onClick={() => setMenu(null)}>
+                              <b>{c.label}</b>
+                              {c.note && <span>{c.note}</span>}
+                            </Link>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
+              ) : (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 
@@ -83,6 +126,19 @@ export function Header() {
                   <Link href={item.href} onClick={() => setOpen(false)}>
                     {item.label}
                   </Link>
+                  {item.children && (
+                    <ul className="hdr__mobile-sub">
+                      {item.children
+                        .filter((c) => c.href !== item.href)
+                        .map((c) => (
+                          <li key={c.href}>
+                            <Link href={c.href} onClick={() => setOpen(false)}>
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
                 </motion.li>
               ))}
             </ul>

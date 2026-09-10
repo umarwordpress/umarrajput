@@ -36,11 +36,17 @@ export function Footer() {
           <div>
             <h3>Services</h3>
             <ul>
-              {services.slice(0, 5).map((s) => (
-                <li key={s.id}>
-                  <Link href="/#services">{s.title}</Link>
-                </li>
-              ))}
+              {/* The one service with a page of its own gets a real link. */}
+              <li>
+                <Link href="/website-development-services-in-pakistan">Web Development</Link>
+              </li>
+              {services
+                .filter((s) => s.id !== 'website-development')
+                .map((s) => (
+                  <li key={s.id}>
+                    <Link href="/#services">{s.title}</Link>
+                  </li>
+                ))}
             </ul>
           </div>
 

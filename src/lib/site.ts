@@ -39,9 +39,27 @@ export const site = {
   },
 };
 
-export const nav = [
-  { href: '/#services', label: 'Services' },
+export type NavItem = {
+  href: string;
+  label: string;
+  /** Rendered as a dropdown when present. */
+  children?: { href: string; label: string; note?: string }[];
+};
+
+export const nav: NavItem[] = [
+  {
+    href: '/#services',
+    label: 'Services',
+    children: [
+      {
+        href: '/website-development-services-in-pakistan',
+        label: 'Web Development',
+        note: 'Business sites, WordPress, e-commerce',
+      },
+      { href: '/#services', label: 'All services', note: 'The four, and how they fit together' },
+    ],
+  },
   { href: '/#work', label: 'Work' },
   { href: '/#about', label: 'About' },
   { href: '/#contact', label: 'Contact' },
-] as const;
+];

@@ -12,8 +12,8 @@ export function About() {
         <motion.div variants={stagger(0.09)} initial="hidden" whileInView="show" viewport={inView}>
           <motion.span className="eyebrow" variants={fadeUp}>About</motion.span>
           <motion.h2 className="title" variants={fadeUp} style={{ margin: '18px 0 22px' }}>
-            I Build Websites, Applications and Systems That Solve Real{' '}
-            <span className="grad-text">Business Problems.</span>
+            Websites, Apps and Systems That Solve{' '}
+            <span className="grad-text">Real Problems.</span>
           </motion.h2>
           <motion.p variants={fadeUp}>
             I&apos;m <strong>Umar Rajput</strong>, a developer working across web development,
