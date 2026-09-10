@@ -1,5 +1,5 @@
 type Name =
-  | 'search' | 'file' | 'layout' | 'bag' | 'pen' | 'trend' | 'app' | 'automation'
+  | 'search' | 'file' | 'layout' | 'bag' | 'pen' | 'trend' | 'app' | 'automation' | 'check'
   | 'arrow-right' | 'linkedin' | 'instagram' | 'x' | 'whatsapp'
   | 'mail' | 'phone' | 'pin' | 'download';
 
@@ -12,6 +12,7 @@ const paths: Record<Name, React.ReactNode> = {
   trend: <><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></>,
   app: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 8.5h18M7.5 12.5h9M7.5 16h5" /></>,
   automation: <><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z" /></>,
+  check: <path d="m20 6-11 11-5-5" />,
   'arrow-right': <path d="M5 12h14M13 6l6 6-6 6" />,
   linkedin: <><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></>,
   instagram: <><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><path d="M17.5 6.5h.01" /></>,
